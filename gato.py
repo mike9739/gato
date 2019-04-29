@@ -92,16 +92,18 @@ def isBoardFull(board):
         return False
     else:
         return True
-
+#Funcion para jugar contra la IA
 def PVE():
     print('Vamos a jugar al gato :D')
     printBoard(board)
-
+    #revisa que el tablero no este lleno
     while not(isBoardFull(board)):
+        #si no hay ganador el jugador puede mover
         if not(isWinner(board, 'O')):
             playerMove()
             printBoard(board)
         else:
+            #de lo controraio la IA gano
             print('La computadora te gano :C')
             break
 
@@ -119,9 +121,10 @@ def PVE():
 
     if isBoardFull(board):
         print('Empate!')
-
+        pass
+#funcion para que jueguen dos IA
 def PCVSPC():
-    print('disfruta dfel juego :D')
+    print('disfruta del juego :D')
     printBoard(board)
 
     while not(isBoardFull(board)):
