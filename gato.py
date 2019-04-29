@@ -77,6 +77,8 @@ def compMove():
         move = selectRandom(edgesOpen)
         
     return move
+
+
     #selecciona una jugada aleatoriamente 
 def selectRandom(li):
     import random
@@ -91,7 +93,7 @@ def isBoardFull(board):
     else:
         return True
 
-def main():
+def PVE():
     print('Vamos a jugar al gato :D')
     printBoard(board)
 
@@ -118,11 +120,49 @@ def main():
     if isBoardFull(board):
         print('Empate!')
 
+def PCVSPC():
+    print('disfruta dfel juego :D')
+    printBoard(board)
+
+    while not(isBoardFull(board)):
+        if not(isWinner(board, 'O')):
+            move = compMove()
+            if move == 0:
+                print('Empate')
+            else:
+                insertLetter('X',move)
+                print('La compputadora coloco una O en:', move , ':')
+                printBoard(board)
+
+        else:
+            print('La computadora 2 gano')
+            break
+
+        if not(isWinner(board, 'X')):
+            move = compMove()
+            if move == 0:
+                print('Empate :/!')
+            else:
+                insertLetter('O', move)
+                printBoard(board)
+        else:
+            print('PC1 gano')
+            break
+
+    if isBoardFull(board):
+        print('Empate!')
+
 while True:
-    answer = input('Quieres volver a jugar? (Y/N)')
-    if answer.lower() == 'y' or answer.lower == 'yes':
+    option = input('Quieres que juegue contra la PC(1) o contra ti (2)?')
+    if option.lower() == '1':
         board = [' ' for x in range(10)]
         print('-----------------------------------')
-        main()
+        PCVSPC()
     else:
-        break
+        answer = input('Quieres volver a jugar? (Y/N)')
+        if answer.lower() == 'y' or answer.lower == 'yes':
+            board = [' ' for x in range(10)]
+            print('-----------------------------------')
+            PVE()
+        else:
+            break
